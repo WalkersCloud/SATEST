@@ -15,7 +15,6 @@ from bot.helper import custom_filters
 from bot import app
 from bot.helper.telegram_helper.filters import CustomFilters
 
-BOTUSERNAME = os.getenv('BOTUNAME')
 session = aiohttp.ClientSession()
 search_lock = asyncio.Lock()
 search_info = {False: dict(), True: dict()}
@@ -159,5 +158,5 @@ def searchhelp(update, context):
     update.effective_message.reply_photo(IMAGE_URL, help_string, parse_mode=ParseMode.HTML)
     
     
-SEARCHHELP_HANDLER = CommandHandler("tshelp"+BOTUSERNAME, searchhelp, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+SEARCHHELP_HANDLER = CommandHandler("tshelp", searchhelp, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 dispatcher.add_handler(SEARCHHELP_HANDLER)
