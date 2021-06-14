@@ -51,6 +51,7 @@ def cloneNode(update, context):
         msg = sendMessage(f"💉 Cloning: <code>{link}</code>", context.bot, update)
         result, button = gd.clone(link)
         deleteMessage(context.bot, msg1)
+        deleteMessage(context.bot, msg)
         if button == "":
             sendMessage(result, context.bot, update)
         else:
